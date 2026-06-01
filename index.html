@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davi e a Obesidade nos Pets 🐱</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF8C00;
+    --orange-light: #FFE5B4;
+    --orange-dark: #CC6600;
+    --teal: #00B894;
+    --teal-light: #C8F5EB;
+    --teal-dark: #007A63;
+    --coral: #FF6B6B;
+    --coral-light: #FFE0E0;
+    --purple: #6C5CE7;
+    --purple-light: #E8E6FF;
+    --yellow: #FDCB6E;
+    --yellow-dark: #C79B1E;
+    --blue: #0984E3;
+    --blue-light: #D6ECFF;
+    --green: #00B894;
+    --red: #D63031;
+    --bg: #FFF8F0;
+    --card: #FFFFFF;
+    --text: #2D3436;
+    --text-muted: #636E72;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    background: linear-gradient(135deg, #FF8C00, #FF6B6B);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(255,107,107,0.3);
+  }
+  nav .logo { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; color: white; }
+  nav .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  nav .nav-links a {
+    color: white; text-decoration: none; font-weight: 700; font-size: 13px;
+    background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px;
+    transition: background 0.2s;
+  }
+  nav .nav-links a:hover { background: rgba(255,255,255,0.35); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #FF8C00 0%, #FF6B6B 50%, #E17055 100%);
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 0; right: 0;
+    height: 80px;
+    background: var(--bg);
+    border-radius: 50% 50% 0 0 / 80px 80px 0 0;
+  }
+  .hero-cat {
+    font-size: 120px;
+    line-height: 1;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  .hero h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(32px, 6vw, 60px);
+    font-weight: 800;
+    color: white;
+    margin: 16px 0 12px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .hero p {
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: rgba(255,255,255,0.92);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    font-weight: 600;
+  }
+  .hero-btn {
+    display: inline-block;
+    background: white;
+    color: var(--orange-dark);
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-btn:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+  /* SECTIONS */
+  section { padding: 60px 24px; max-width: 960px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  /* CARDS GRID */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .card-icon { font-size: 48px; margin-bottom: 12px; display: block; }
+  .card h3 { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
+  .card.orange { border-color: var(--orange); background: linear-gradient(135deg, #FFF3E0, white); }
+  .card.teal { border-color: var(--teal); background: linear-gradient(135deg, #E0FAF4, white); }
+  .card.coral { border-color: var(--coral); background: linear-gradient(135deg, #FFE8E8, white); }
+  .card.purple { border-color: var(--purple); background: linear-gradient(135deg, #EDE8FF, white); }
+  .card.blue { border-color: var(--blue); background: linear-gradient(135deg, #E3F2FF, white); }
+  .card.yellow { border-color: var(--yellow); background: linear-gradient(135deg, #FFFBEA, white); }
+
+  /* DAVI SECTION */
+  .davi-section {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0C8);
+    border-radius: 32px;
+    padding: 48px 36px;
+    margin: 0 auto;
+    max-width: 960px;
+    position: relative;
+    overflow: hidden;
+  }
+  .davi-section::before {
+    content: '🐱';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.06;
+    top: -20px; right: -20px;
+  }
+  .davi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+  @media (max-width: 640px) { .davi-layout { grid-template-columns: 1fr; } }
+  .davi-photo {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 4px solid var(--orange);
+  }
+  .davi-photo img { width: 100%; display: block; }
+  .davi-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .davi-name {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--orange-dark);
+    margin-bottom: 8px;
+  }
+  .davi-text { font-size: 16px; line-height: 1.7; color: var(--text); font-weight: 600; }
+  .davi-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .stat-box {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .stat-box .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-box .stat-value { font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; margin-top: 4px; }
+  .stat-box.orange .stat-value { color: var(--orange); }
+  .stat-box.teal .stat-value { color: var(--teal-dark); }
+  .stat-box.coral .stat-value { color: var(--coral); }
+  .stat-box.purple .stat-value { color: var(--purple); }
+
+  /* PROGRESS BAR */
+  .progress-section { margin-top: 24px; }
+  .progress-label { font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+  .progress-bar {
+    background: rgba(0,0,0,0.08);
+    border-radius: 50px;
+    height: 18px;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 50px;
+    transition: width 1.5s ease;
+    position: relative;
+  }
+  .progress-fill::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-weight: 800;
+    color: white;
+  }
+
+  /* GAME SECTION */
+  .game-container {
+    background: white;
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 760px;
+  }
+  .game-header {
+    background: linear-gradient(135deg, #6C5CE7, #a29bfe);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .game-header h2 { font-family: 'Baloo 2', sans-serif; font-size: 28px; font-weight: 800; color: white; }
+  .game-header .game-icon { font-size: 48px; }
+  .game-body { padding: 32px; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #F0F0F0;
+    color: var(--text-muted);
+  }
+  .tab-btn.active { background: var(--purple); color: white; box-shadow: 0 4px 16px rgba(108,92,231,0.4); }
+  .tab-btn:hover:not(.active) { background: var(--purple-light); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* QUIZ GAME */
+  .quiz-question {
+    background: linear-gradient(135deg, var(--purple-light), white);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    border: 2px solid var(--purple);
+    position: relative;
+  }
+  .question-num {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .question-text { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+  .options { display: grid; gap: 10px; }
+  .option-btn {
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid #E0E0E0;
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .option-btn:hover { border-color: var(--purple); background: var(--purple-light); transform: translateX(4px); }
+  .option-btn.correct { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); }
+  .option-btn.wrong { border-color: var(--coral); background: var(--coral-light); color: var(--red); }
+  .option-btn:disabled { cursor: default; transform: none; }
+  .quiz-score {
+    background: linear-gradient(135deg, var(--yellow), #FF8C00);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    display: none;
+  }
+  .quiz-score h3 { font-family: 'Baloo 2', sans-serif; font-size: 28px; font-weight: 800; color: white; }
+  .quiz-score p { color: rgba(255,255,255,0.9); font-size: 18px; font-weight: 600; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(108,92,231,0.3);
+    margin-top: 16px;
+  }
+  .btn-primary:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(108,92,231,0.4); }
+
+  /* DAVI GAME */
+  #davi-game {
+    text-align: center;
+  }
+  .davi-game-cat {
+    font-size: 100px;
+    display: block;
+    margin: 0 auto 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    animation: float 3s ease-in-out infinite;
+    user-select: none;
+  }
+  .davi-game-cat:hover { transform: scale(1.1); }
+  #davi-weight-bar {
+    height: 28px;
+    border-radius: 50px;
+    background: #F0F0F0;
+    margin: 16px 0;
+    overflow: hidden;
+    border: 2px solid #E0E0E0;
+  }
+  #davi-weight-fill {
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.5s ease, background 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    color: white;
+  }
+  .food-options { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
+  .food-btn {
+    background: white;
+    border: 3px solid #E0E0E0;
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .food-btn span { font-size: 11px; font-weight: 800; color: var(--text-muted); }
+  .food-btn.healthy { border-color: var(--teal); }
+  .food-btn.healthy:hover { background: var(--teal-light); transform: scale(1.08); }
+  .food-btn.unhealthy { border-color: var(--coral); }
+  .food-btn.unhealthy:hover { background: var(--coral-light); transform: scale(1.08); }
+  .food-btn.exercise { border-color: var(--blue); }
+  .food-btn.exercise:hover { background: var(--blue-light); transform: scale(1.08); }
+  #davi-status {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    min-height: 36px;
+    transition: color 0.3s;
+  }
+  #davi-msg {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 600;
+    min-height: 24px;
+    margin-top: 6px;
+  }
+  .davi-stats-row { display: flex; gap: 12px; justify-content: center; margin: 16px 0; }
+  .mini-stat { background: #F8F8F8; border-radius: 10px; padding: 8px 16px; text-align: center; }
+  .mini-stat .ms-label { font-size: 11px; color: var(--text-muted); font-weight: 700; }
+  .mini-stat .ms-val { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 800; }
+
+  /* SORT GAME */
+  #sort-game { }
+  .sort-instructions { font-size: 16px; color: var(--text-muted); font-weight: 600; margin-bottom: 20px; text-align: center; }
+  .sort-areas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .sort-zone {
+    background: #F8F8F8;
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    min-height: 180px;
+    border: 2px dashed #D0D0D0;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .sort-zone.healthy-zone { border-color: var(--teal); background: var(--teal-light); }
+  .sort-zone.unhealthy-zone { border-color: var(--coral); background: var(--coral-light); }
+  .sort-zone h4 { font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 12px; text-align: center; }
+  .sort-zone.healthy-zone h4 { color: var(--teal-dark); }
+  .sort-zone.unhealthy-zone h4 { color: var(--red); }
+  .items-pool { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 16px; min-height: 80px; background: #F0F0F0; border-radius: var(--radius-sm); margin-bottom: 16px; }
+  .food-item {
+    background: white;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 20px;
+    cursor: grab;
+    border: 2px solid #E0E0E0;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .food-item span { font-size: 12px; font-weight: 700; color: var(--text-muted); }
+  .food-item:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: grab; }
+  .food-item.dragging { opacity: 0.4; }
+  .sort-zone.drag-over { border-style: solid; transform: scale(1.01); }
+  .sort-result { text-align: center; margin-top: 16px; }
+
+  /* BCS SECTION */
+  .bcs-slider-container { text-align: center; padding: 20px 0; }
+  .bcs-cat-display { font-size: 80px; margin-bottom: 12px; display: block; transition: font-size 0.3s; }
+  input[type=range] { width: 100%; max-width: 400px; height: 8px; accent-color: var(--orange); margin: 16px 0; cursor: pointer; }
+  .bcs-info {
+    background: linear-gradient(135deg, #FFF3E0, white);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid var(--orange);
+  }
+  .bcs-score { font-family: 'Baloo 2', sans-serif; font-size: 48px; font-weight: 900; color: var(--orange); }
+  .bcs-label { font-family: 'Baloo 2', sans-serif; font-size: 20px; font-weight: 700; }
+  .bcs-desc { font-size: 14px; color: var(--text-muted); font-weight: 600; margin-top: 6px; line-height: 1.5; }
+
+  /* TIPS SECTION */
+  .tips-bg {
+    background: linear-gradient(135deg, #00B894, #00CEC9);
+    border-radius: 32px;
+    padding: 48px 36px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .tips-bg .section-title { color: white; }
+  .tips-bg .section-sub { color: rgba(255,255,255,0.8); }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .tip-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    padding: 24px 18px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: transform 0.2s;
+  }
+  .tip-card:hover { transform: translateY(-4px); }
+  .tip-card .tip-icon { font-size: 40px; margin-bottom: 10px; display: block; }
+  .tip-card h4 { font-family: 'Baloo 2', sans-serif; font-size: 17px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .tip-card p { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 600; line-height: 1.5; }
+
+  /* FOOTER */
+  footer {
+    background: #2D3436;
+    color: white;
+    text-align: center;
+    padding: 40px 24px;
+    margin-top: 60px;
+  }
+  footer .footer-cat { font-size: 48px; margin-bottom: 12px; }
+  footer p { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 600; line-height: 1.7; }
+  footer strong { color: var(--orange); }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #FFF9C4, #FFFBEA);
+    border-left: 6px solid var(--yellow);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--yellow-dark);
+    line-height: 1.7;
+  }
+  .highlight-box strong { color: #9B6B00; }
+
+  /* CONFETTI */
+  .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .sort-areas { grid-template-columns: 1fr; }
+    .davi-stats { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">🐱 Davi & Os Pets</div>
+  <div class="nav-links">
+    <a href="#sobre">O que é?</a>
+    <a href="#davi">Davi</a>
+    <a href="#jogos">Jogos</a>
+    <a href="#dicas">Dicas</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-cat">🐱</span>
+  <h1>Pets Saudáveis,<br>Pets Felizes!</h1>
+  <p>Vamos aprender sobre obesidade em animais de companhia de um jeito super divertido!</p>
+  <a href="#sobre" class="hero-btn">Começar a aprender 🚀</a>
+</div>
+
+<!-- O QUE É OBESIDADE -->
+<section id="sobre">
+  <div class="section-title">🤔 O que é Obesidade?</div>
+  <p class="section-sub">Vamos entender por que nossos pets precisam de cuidado com a alimentação!</p>
+
+  <div class="cards-grid">
+    <div class="card orange">
+      <span class="card-icon">⚖️</span>
+      <h3>Peso Além do Normal</h3>
+      <p>A obesidade acontece quando um animal acumula gordura demais no corpo. Isso é diferente de ser forte ou musculoso!</p>
+    </div>
+    <div class="card teal">
+      <span class="card-icon">🏥</span>
+      <h3>É uma Doença</h3>
+      <p>Sim! A obesidade é considerada uma doença. Um veterinário precisa ajudar o pet a perder peso de forma segura e saudável.</p>
+    </div>
+    <div class="card coral">
+      <span class="card-icon">😿</span>
+      <h3>Causa Sofrimento</h3>
+      <p>Animais obesos têm dificuldade de correr, brincar e se movimentar. Isso deixa eles tristes e com menos energia!</p>
+    </div>
+    <div class="card purple">
+      <span class="card-icon">🍔</span>
+      <h3>Por que acontece?</h3>
+      <p>Comer demais, comer comida errada e não se exercitar são as principais causas. Igual acontece com as pessoas!</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    💡 <strong>Você sabia?</strong> A gordura do corpo não é apenas "gordura parada". Ela produz um hormônio chamado <strong>leptina</strong>, que pode causar inflamações no corpo e deixar o sistema imunológico desregulado. Isso significa que animais gordos ficam doentes com mais frequência!
+  </div>
+
+  <div class="cards-grid" style="margin-top:24px;">
+    <div class="card blue">
+      <span class="card-icon">💓</span>
+      <h3>Coração Sobrecarregado</h3>
+      <p>O coração precisa trabalhar muito mais para bombear sangue em um corpo com excesso de gordura.</p>
+    </div>
+    <div class="card yellow">
+      <span class="card-icon">🦴</span>
+      <h3>Ossos e Articulações</h3>
+      <p>O peso extra machuca as articulações e ossos. Cachorros e gatos obesos frequentemente têm dores ao andar.</p>
+    </div>
+    <div class="card orange">
+      <span class="card-icon">🌬️</span>
+      <h3>Dificuldade de Respirar</h3>
+      <p>A gordura pode apertar os pulmões, causando cansaço fácil e dificuldade para respirar.</p>
+    </div>
+    <div class="card teal">
+      <span class="card-icon">🩺</span>
+      <h3>Diabetes</h3>
+      <p>Assim como nas pessoas, gatos e cães obesos podem desenvolver diabetes — uma doença que afeta o açúcar no sangue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DAVI SECTION -->
+<div style="padding: 0 24px;">
+  <section id="davi" style="padding: 0;">
+    <div class="davi-section">
+      <div class="section-title" style="margin-bottom:8px; color: var(--orange-dark);">😸 Conheça o Davi!</div>
+      <p class="section-sub" style="margin-bottom: 32px;">Um gatinho gordo com uma história de superação</p>
+
+      <div class="davi-layout">
+        <div>
+          <div class="davi-photo">
+            <img src="Davi-deitado-fora-cama.png" alt="Foto do Davi, um gato cinza gordinho deitado no chão" />
+          </div>
+        </div>
+        <div>
+          <div class="davi-badge">⭐ O Gato Real!</div>
+          <div class="davi-name">Davi 🐱</div>
+          <p class="davi-text">O Davi é um gato cinza e branquinho muito amado pelo seu tutor. Ele é um gatinho que ficou um pouquinho... glutão! 😄 O Davi gostava muito de comer e não se exercitava o suficiente, então ficou com o peso bem acima do ideal para um gatinho da raça e porte dele.</p>
+          <br>
+          <p class="davi-text">Mas a boa notícia é que o Davi está em processo de <strong>emagrecimento</strong>! Com a ajuda do veterinário, ele está aprendendo a comer direito e voltando a se mexer mais. 💪</p>
+
+          <div class="davi-stats">
+            <div class="stat-box orange">
+              <div class="stat-label">Situação atual</div>
+              <div class="stat-value">Obeso</div>
+            </div>
+            <div class="stat-box teal">
+              <div class="stat-label">Status</div>
+              <div class="stat-value">Melhorando!</div>
+            </div>
+            <div class="stat-box coral">
+              <div class="stat-label">Risco</div>
+              <div class="stat-value">Alto</div>
+            </div>
+            <div class="stat-box purple">
+              <div class="stat-label">Humor</div>
+              <div class="stat-value">Feliz 😸</div>
+            </div>
+          </div>
+
+          <div class="progress-section">
+            <div class="progress-label">Progresso de emagrecimento do Davi 🎯</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="davi-progress" style="width:0%; background: linear-gradient(90deg, var(--orange), var(--teal)); " data-label="em progresso!"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <img src="Davi-deitado.png" alt="Davi dormindo em sua caminha" style="width:100%; display:block; object-fit: cover; height: 200px;" />
+          <div style="padding: 12px; font-size: 13px; font-weight: 700; color: var(--text-muted); text-align: center;">🛏️ Davi no seu cantinho</div>
+        </div>
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <img src="Gordinho.png" alt="Davi em sua caminha" style="width:100%; display:block; object-fit: cover; height: 200px;" />
+          <div style="padding: 12px; font-size: 13px; font-weight: 700; color: var(--text-muted); text-align: center;">😴 Relaxando (de barriga pra cima!)</div>
+        </div>
+        <div style="background: linear-gradient(135deg, var(--orange-light), #FFD4A8); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+          <div style="font-size: 48px;">💬</div>
+          <p style="font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 700; color: var(--orange-dark); margin-top: 8px; line-height: 1.4;">"Com ajuda e carinho, qualquer pet pode ter uma vida mais saudável!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JOGOS -->
+<section id="jogos">
+  <div class="section-title">🎮 Hora dos Jogos!</div>
+  <p class="section-sub">Aprenda enquanto se diverte — escolha um jogo abaixo</p>
+
+  <div class="game-container">
+    <div class="game-header">
+      <div class="game-icon">🎯</div>
+      <div>
+        <h2>Zona de Aprendizado</h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600;">3 jogos diferentes para você aprender!</p>
+      </div>
+    </div>
+    <div class="game-body">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('quiz')">🧠 Quiz do Davi</button>
+        <button class="tab-btn" onclick="showTab('davi-game')">🐱 Cuide do Davi</button>
+        <button class="tab-btn" onclick="showTab('sort')">🥗 Separar Alimentos</button>
+        <button class="tab-btn" onclick="showTab('bcs')">📏 Escore Corporal</button>
+      </div>
+
+      <!-- QUIZ -->
+      <div class="tab-content active" id="tab-quiz">
+        <div id="quiz-area"></div>
+        <div class="quiz-score" id="quiz-score">
+          <div style="font-size: 60px;" id="quiz-trophy">🏆</div>
+          <h3 id="quiz-result-text">Parabéns!</h3>
+          <p id="quiz-result-sub">Você é craque em saúde animal!</p>
+          <button class="btn-primary" onclick="initQuiz()">Jogar de novo 🔄</button>
+        </div>
+      </div>
+
+      <!-- DAVI GAME -->
+      <div class="tab-content" id="tab-davi-game">
+        <div id="davi-game">
+          <p style="font-size: 16px; color: var(--text-muted); font-weight: 600; margin-bottom: 16px;">Ajude o Davi a emagrecer! Clique nos alimentos saudáveis e exercícios. Evite as guloseimas!</p>
+          <div class="davi-stats-row">
+            <div class="mini-stat">
+              <div class="ms-label">Peso do Davi</div>
+              <div class="ms-val" id="davi-weight-val" style="color: var(--orange);">7.2 kg</div>
+            </div>
+            <div class="mini-stat">
+              <div class="ms-label">Meta</div>
+              <div class="ms-val" style="color: var(--teal-dark);">5.0 kg</div>
+            </div>
+            <div class="mini-stat">
+              <div class="ms-label">Pontos</div>
+              <div class="ms-val" id="davi-points" style="color: var(--purple);">0</div>
+            </div>
+          </div>
+          <div style="max-width: 400px; margin: 0 auto;">
+            <div id="davi-weight-bar">
+              <div id="davi-weight-fill" style="width: 100%;">7.2kg</div>
+            </div>
+          </div>
+          <div id="davi-status" style="color: var(--orange);">Davi está gordinho... 😿</div>
+          <div id="davi-msg">Escolha o que dar para o Davi abaixo!</div>
+          <span class="davi-game-cat" id="davi-cat-emoji" onclick="daviBoop()">😿</span>
+          <div class="food-options">
+            <button class="food-btn healthy" onclick="feedDavi('ração', -0.3, 10, '✅ Boa escolha! Ração balanceada é ótima!')">🥣<span>Ração</span></button>
+            <button class="food-btn healthy" onclick="feedDavi('frango', -0.2, 8, '✅ Proteína magra! Muito bom!')">🍗<span>Frango</span></button>
+            <button class="food-btn exercise" onclick="feedDavi('exercício', -0.5, 15, '🏃 Davi foi brincar! Excelente!')">🏃<span>Brincar</span></button>
+            <button class="food-btn exercise" onclick="feedDavi('caminhada', -0.3, 12, '🐾 Passeio! Davi adorou!')">🐾<span>Passeio</span></button>
+            <button class="food-btn unhealthy" onclick="feedDavi('bolo', 0.4, -5, '❌ Açúcar faz mal! Evite!')">🎂<span>Bolo</span></button>
+            <button class="food-btn unhealthy" onclick="feedDavi('biscoito', 0.2, -3, '❌ Muitos petiscos engordam!')">🍪<span>Biscoito</span></button>
+            <button class="food-btn unhealthy" onclick="feedDavi('linguiça', 0.5, -8, '❌ Carne processada é ruim!')">🌭<span>Linguiça</span></button>
+          </div>
+          <button class="btn-primary" onclick="resetDaviGame()" style="background: var(--orange); margin-top: 8px;">Reiniciar jogo 🔄</button>
+        </div>
+      </div>
+
+      <!-- SORT GAME -->
+      <div class="tab-content" id="tab-sort">
+        <div id="sort-game">
+          <p class="sort-instructions">Arraste cada alimento para o lugar certo! 🖱️</p>
+          <div class="items-pool" id="items-pool"></div>
+          <div class="sort-areas">
+            <div class="sort-zone healthy-zone" id="zone-healthy" ondragover="allowDrop(event)" ondrop="dropItem(event, 'healthy')">
+              <h4>✅ Alimento Saudável</h4>
+              <div id="healthy-items" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+            </div>
+            <div class="sort-zone unhealthy-zone" id="zone-unhealthy" ondragover="allowDrop(event)" ondrop="dropItem(event, 'unhealthy')">
+              <h4>❌ Evitar / Com Moderação</h4>
+              <div id="unhealthy-items" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+            </div>
+          </div>
+          <div class="sort-result" id="sort-result"></div>
+          <button class="btn-primary" onclick="initSort()" style="margin-top: 16px; background: var(--teal);">Reiniciar 🔄</button>
+        </div>
+      </div>
+
+      <!-- BCS TOOL -->
+      <div class="tab-content" id="tab-bcs">
+        <div class="bcs-slider-container">
+          <p style="font-size: 16px; color: var(--text-muted); font-weight: 600; margin-bottom: 20px;">O <strong>Escore de Condição Corporal (BCS)</strong> é a forma que os veterinários usam para saber se um animal está no peso certo. Vai de 1 a 9. Arraste o controle para ver!</p>
+          <span class="bcs-cat-display" id="bcs-cat">🐱</span>
+          <input type="range" min="1" max="9" value="5" id="bcs-slider" oninput="updateBCS(this.value)">
+          <div class="bcs-info">
+            <div class="bcs-score" id="bcs-score">5/9</div>
+            <div class="bcs-label" id="bcs-label">Ideal</div>
+            <div class="bcs-desc" id="bcs-desc">O gato está no peso ideal! Dá para sentir as costelas facilmente e a cintura é visível quando visto de cima.</div>
+          </div>
+          <div style="margin-top: 20px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <span style="background: #4CAF50; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;">BCS 4-5: Ideal ✅</span>
+            <span style="background: var(--yellow); color: var(--yellow-dark); padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;">BCS 6-7: Sobrepeso ⚠️</span>
+            <span style="background: var(--coral); color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;">BCS 8-9: Obeso 🚨</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DICAS -->
+<div style="padding: 0 24px;">
+  <div id="dicas" class="tips-bg">
+    <div class="section-title">💚 Como Manter Nossos Pets Saudáveis</div>
+    <p class="section-sub">Dicas que qualquer pessoa pode colocar em prática!</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-icon">🥣</span>
+        <h4>Ração na Medida Certa</h4>
+        <p>Siga as instruções do pacote e do veterinário. Nunca dê mais do que o recomendado!</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🚫</span>
+        <h4>Cuidado com Petiscos</h4>
+        <p>Petiscos podem ser dados com moderação. Evite dar comida de gente para os animais!</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🏃</span>
+        <h4>Exercício Todo Dia</h4>
+        <p>Cachorros precisam de caminhadas. Gatos precisam de brinquedos e brincadeiras!</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">💧</span>
+        <h4>Água Sempre Disponível</h4>
+        <p>Água fresca e limpa é fundamental para o metabolismo e saúde dos pets.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🩺</span>
+        <h4>Visita ao Veterinário</h4>
+        <p>Consultas regulares ajudam a detectar problemas de peso antes que virem obesidade.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">❤️</span>
+        <h4>Amor com Responsabilidade</h4>
+        <p>Dar comida em excesso não é amor — é prejudicial! Cuide com carinho E conhecimento.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cat">🐱</div>
+  <p><strong>Davi e a Obesidade nos Pets</strong></p>
+  <p>Projeto de Extensão — Obesidade em Animais de Companhia e seus Impactos na Saúde Pública</p>
+  <p style="margin-top: 8px;">Baseado em: Murthy et al. (2024). <em>The general and systemic consequences of obesity in cats and dogs.</em> Veterinary Integrative Sciences, v. 22, n. 1, p. 265–290.</p>
+  <p style="margin-top: 10px;">Feito por Davi Fernandes Paiva</p>
+  <p style="margin-top: 12px;">Feito com 💛 para as crianças aprenderem sobre saúde animal!</p>
+</footer>
+
+<!-- CONFETTI CONTAINER -->
+<div class="confetti-container" id="confetti"></div>
+
+<script>
+// ==================== QUIZ ====================
+const questions = [
+  {
+    q: "O que é a LEPTINA?",
+    emoji: "🧪",
+    options: ["Uma ração especial para gatos", "Um hormônio produzido pela gordura que pode causar inflamações", "Um medicamento para emagrecimento", "Um tipo de exercício para pets"],
+    correct: 1,
+    explain: "A leptina é produzida pelo tecido adiposo (gordura) e quando em excesso, pode desregular o sistema imunológico!"
+  },
+  {
+    q: "Qual é o nome da ferramenta que os veterinários usam para saber se um animal está no peso certo?",
+    emoji: "📏",
+    options: ["Termômetro", "Escore de Condição Corporal (BCS)", "Balança de humor", "Régua de gordura"],
+    correct: 1,
+    explain: "O BCS vai de 1 a 9. O ideal para gatos e cães é entre 4 e 5!"
+  },
+  {
+    q: "Por que não devemos dar bolo e doces para gatos e cachorros?",
+    emoji: "🎂",
+    options: ["Porque eles não gostam do sabor", "Porque engorda e pode causar diabetes e outras doenças", "Porque é muito caro", "Porque veterinários preferem dar eles mesmos"],
+    correct: 1,
+    explain: "Açúcar e gordura em excesso podem causar obesidade, diabetes e problemas no fígado dos pets!"
+  },
+  {
+    q: "O Davi (o gatinho da nossa apresentação) está em processo de:",
+    emoji: "🐱",
+    options: ["Férias", "Emagrecimento saudável com acompanhamento veterinário", "Crescimento acelerado", "Treinamento olímpico"],
+    correct: 1,
+    explain: "O Davi está emagrecendo com dieta controlada e mais brincadeiras! É um processo gradual e seguro."
+  },
+  {
+    q: "Qual doença pode ser causada pela obesidade em gatos e cães?",
+    emoji: "🩺",
+    options: ["Gripe", "Catapora", "Diabetes Mellitus", "Virose"],
+    correct: 2,
+    explain: "Diabetes Mellitus é uma doença do açúcar no sangue que pode surgir por causa da obesidade em pets!"
+  },
+  {
+    q: "Quem deve indicar a dieta de um pet obeso?",
+    emoji: "👨‍⚕️",
+    options: ["O próprio dono, com base no que acha", "Um veterinário", "O pet escolhe o que quer comer", "O dono de uma pet shop"],
+    correct: 1,
+    explain: "Sempre consulte um veterinário! Eles sabem a quantidade e tipo certos de alimento para cada animal."
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+
+function initQuiz() {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('quiz-score').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  if (currentQ >= questions.length) {
+    endQuiz();
+    return;
+  }
+  const q = questions[currentQ];
+  const total = questions.length;
+  document.getElementById('quiz-area').innerHTML = `
+    <div class="quiz-question">
+      <div class="question-num">Pergunta ${currentQ + 1} de ${total}</div>
+      <div class="question-text">${q.emoji} ${q.q}</div>
+      <div class="options">
+        ${q.options.map((opt, i) => `
+          <button class="option-btn" onclick="selectOption(${i})">
+            <span style="background:#F0F0F0; padding:4px 10px; border-radius:8px; font-weight:800; min-width:28px; text-align:center;">${String.fromCharCode(65+i)}</span>
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+    <div style="background:#F0F0F0; height:6px; border-radius:50px; overflow:hidden;">
+      <div style="height:100%; width:${(currentQ/total)*100}%; background:linear-gradient(90deg,var(--purple),var(--teal)); border-radius:50px; transition:width 0.5s;"></div>
+    </div>
+  `;
+}
+
+function selectOption(idx) {
+  const q = questions[currentQ];
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    if (i === idx && i !== q.correct) b.classList.add('wrong');
+  });
+  if (idx === q.correct) score++;
+  
+  const explainDiv = document.createElement('div');
+  explainDiv.style.cssText = 'background:#F0F9FF;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:14px;font-weight:600;color:#0369A1;border-left:4px solid var(--blue);line-height:1.6;';
+  explainDiv.innerHTML = `💡 <strong>Explicação:</strong> ${q.explain}`;
+  document.querySelector('.quiz-question').appendChild(explainDiv);
+
+  setTimeout(() => {
+    currentQ++;
+    renderQuestion();
+  }, 2200);
+}
+
+function endQuiz() {
+  document.getElementById('quiz-area').style.display = 'none';
+  const scoreEl = document.getElementById('quiz-score');
+  scoreEl.style.display = 'block';
+  const pct = Math.round((score / questions.length) * 100);
+  let trophy = '🏆', msg = 'Incrível! Você é expert em saúde animal!', sub = `${score} de ${questions.length} corretas!`;
+  if (pct < 50) { trophy = '📚'; msg = 'Continue estudando!'; sub = `${score} de ${questions.length}. Você vai melhorar!`; }
+  else if (pct < 80) { trophy = '⭐'; msg = 'Muito bem!'; sub = `${score} de ${questions.length} corretas!`; }
+  document.getElementById('quiz-trophy').textContent = trophy;
+  document.getElementById('quiz-result-text').textContent = msg;
+  document.getElementById('quiz-result-sub').textContent = sub;
+  if (pct >= 80) launchConfetti();
+}
+
+// ==================== DAVI GAME ====================
+let daviWeight = 7.2;
+let daviPoints = 0;
+const MAX_WEIGHT = 7.2;
+const MIN_WEIGHT = 5.0;
+
+function updateDaviDisplay() {
+  const w = Math.max(MIN_WEIGHT, Math.min(MAX_WEIGHT, daviWeight));
+  const pct = ((w - MIN_WEIGHT) / (MAX_WEIGHT - MIN_WEIGHT)) * 100;
+  const fill = document.getElementById('davi-weight-fill');
+  fill.style.width = pct + '%';
+  fill.textContent = w.toFixed(1) + 'kg';
+  
+  const clampedPct = Math.round(pct);
+  if (clampedPct > 70) {
+    fill.style.background = 'linear-gradient(90deg, #FF6B6B, #FF8C00)';
+    document.getElementById('davi-cat-emoji').textContent = '😿';
+    document.getElementById('davi-status').textContent = 'Davi está gordinho... 😿';
+    document.getElementById('davi-status').style.color = 'var(--coral)';
+  } else if (clampedPct > 40) {
+    fill.style.background = 'linear-gradient(90deg, var(--yellow), var(--orange))';
+    document.getElementById('davi-cat-emoji').textContent = '😺';
+    document.getElementById('davi-status').textContent = 'Davi está melhorando! 😺';
+    document.getElementById('davi-status').style.color = 'var(--yellow-dark)';
+  } else {
+    fill.style.background = 'linear-gradient(90deg, var(--teal), var(--blue))';
+    document.getElementById('davi-cat-emoji').textContent = '😸';
+    document.getElementById('davi-status').textContent = 'Davi está saudável! 😸🎉';
+    document.getElementById('davi-status').style.color = 'var(--teal-dark)';
+    if (pct < 5) {
+      document.getElementById('davi-status').textContent = '🏆 META ATINGIDA! Davi chegou ao peso ideal!';
+      launchConfetti();
+    }
+  }
+  
+  document.getElementById('davi-weight-val').textContent = w.toFixed(1) + ' kg';
+  document.getElementById('davi-points').textContent = Math.max(0, daviPoints);
+}
+
+function feedDavi(food, weightChange, points, message) {
+  daviWeight = Math.max(MIN_WEIGHT - 0.1, Math.min(MAX_WEIGHT, daviWeight + weightChange));
+  daviPoints += points;
+  document.getElementById('davi-msg').textContent = message;
+  document.getElementById('davi-msg').style.color = points > 0 ? 'var(--teal-dark)' : 'var(--red)';
+  const cat = document.getElementById('davi-cat-emoji');
+  cat.style.transform = 'scale(1.2) rotate(5deg)';
+  setTimeout(() => { cat.style.transform = ''; }, 300);
+  updateDaviDisplay();
+}
+
+function daviBoop() {
+  const cat = document.getElementById('davi-cat-emoji');
+  cat.style.transform = 'scale(1.3) rotate(-8deg)';
+  document.getElementById('davi-msg').textContent = '😹 Miau!';
+  setTimeout(() => { cat.style.transform = ''; }, 400);
+}
+
+function resetDaviGame() {
+  daviWeight = 7.2;
+  daviPoints = 0;
+  document.getElementById('davi-msg').textContent = 'Escolha o que dar para o Davi abaixo!';
+  document.getElementById('davi-msg').style.color = 'var(--text-muted)';
+  updateDaviDisplay();
+}
+
+// ==================== SORT GAME ====================
+const sortItems = [
+  { emoji: '🥣', name: 'Ração', type: 'healthy' },
+  { emoji: '🐟', name: 'Peixe', type: 'healthy' },
+  { emoji: '🥩', name: 'Frango', type: 'healthy' },
+  { emoji: '🥦', name: 'Legumes', type: 'healthy' },
+  { emoji: '💧', name: 'Água', type: 'healthy' },
+  { emoji: '🎂', name: 'Bolo', type: 'unhealthy' },
+  { emoji: '🍟', name: 'Fritas', type: 'unhealthy' },
+  { emoji: '🌭', name: 'Linguiça', type: 'unhealthy' },
+  { emoji: '🍭', name: 'Pirulito', type: 'unhealthy' },
+  { emoji: '🍫', name: 'Chocolate', type: 'unhealthy' },
+];
+
+let dragItem = null;
+let sortAnswers = {};
+
+function initSort() {
+  sortAnswers = {};
+  document.getElementById('healthy-items').innerHTML = '';
+  document.getElementById('unhealthy-items').innerHTML = '';
+  document.getElementById('sort-result').innerHTML = '';
+  const shuffled = [...sortItems].sort(() => Math.random() - 0.5);
+  const pool = document.getElementById('items-pool');
+  pool.innerHTML = '';
+  shuffled.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'food-item';
+    el.draggable = true;
+    el.id = 'item-' + item.name;
+    el.dataset.type = item.type;
+    el.innerHTML = `${item.emoji} <span>${item.name}</span>`;
+    el.addEventListener('dragstart', e => { dragItem = el; el.classList.add('dragging'); });
+    el.addEventListener('dragend', e => { el.classList.remove('dragging'); });
+    pool.appendChild(el);
+  });
+}
+
+function allowDrop(e) { e.preventDefault(); }
+
+function dropItem(e, zone) {
+  e.preventDefault();
+  if (!dragItem) return;
+  const target = zone === 'healthy' ? document.getElementById('healthy-items') : document.getElementById('unhealthy-items');
+  const clone = dragItem.cloneNode(true);
+  clone.draggable = false;
+  const correct = dragItem.dataset.type === zone;
+  clone.style.border = '2px solid ' + (correct ? 'var(--teal)' : 'var(--coral)');
+  clone.style.background = correct ? 'var(--teal-light)' : 'var(--coral-light)';
+  target.appendChild(clone);
+  sortAnswers[dragItem.id] = { zone, correct };
+  dragItem.style.opacity = '0.3';
+  dragItem.draggable = false;
+  dragItem = null;
+  checkSortDone();
+}
+
+function checkSortDone() {
+  const total = sortItems.length;
+  const answered = Object.keys(sortAnswers).length;
+  if (answered >= total) {
+    const correct = Object.values(sortAnswers).filter(a => a.correct).length;
+    const resultEl = document.getElementById('sort-result');
+    if (correct === total) {
+      resultEl.innerHTML = `<div style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;padding:20px;border-radius:16px;font-family:'Baloo 2',sans-serif;font-size:22px;font-weight:800;">🎉 Perfeito! ${correct}/${total} acertos! Você é expert!</div>`;
+      launchConfetti();
+    } else {
+      resultEl.innerHTML = `<div style="background:var(--orange-light);padding:20px;border-radius:16px;font-family:'Baloo 2',sans-serif;font-size:18px;font-weight:700;color:var(--orange-dark);">⭐ ${correct} de ${total} corretos! Continue praticando!</div>`;
+    }
+  }
+}
+
+// ==================== BCS ====================
+const bcsData = {
+  1: { label: 'Muito Magro', cat: '🦴', desc: 'Costelas extremamente visíveis, sem gordura. O animal está severamente desnutrido.', color: '#E74C3C' },
+  2: { label: 'Muito Magro', cat: '🦴', desc: 'Costelas muito visíveis e proeminentes. Pouca gordura e músculo.', color: '#E74C3C' },
+  3: { label: 'Magro', cat: '😿', desc: 'Costelas fáceis de ver e sentir. Pouca gordura corporal.', color: '#E67E22' },
+  4: { label: 'Abaixo do Ideal', cat: '😾', desc: 'Costelas visíveis mas com alguma gordura. Cintura bem marcada.', color: '#F39C12' },
+  5: { label: '⭐ Ideal!', cat: '😸', desc: 'Costelas fáceis de sentir, cintura visível de cima. Peso perfeito! Este é o ideal!', color: '#27AE60' },
+  6: { label: 'Acima do Ideal', cat: '😺', desc: 'Costelas sentidas com alguma pressão. Cintura pouco visível.', color: '#F39C12' },
+  7: { label: 'Sobrepeso', cat: '🐱', desc: 'Difícil sentir as costelas. Gordura na base da cauda. Sem cintura visível.', color: '#E67E22' },
+  8: { label: 'Obeso', cat: '😿', desc: 'Não consegue sentir as costelas. Grande depósito de gordura. Como o Davi!', color: '#E74C3C' },
+  9: { label: 'Obesidade Grave', cat: '🚨', desc: 'Gordura por todo o corpo. Dificuldade de movimentação. Risco de vida!', color: '#C0392B' },
+};
+
+function updateBCS(val) {
+  const data = bcsData[val];
+  document.getElementById('bcs-cat').textContent = data.cat;
+  document.getElementById('bcs-score').textContent = `${val}/9`;
+  document.getElementById('bcs-score').style.color = data.color;
+  document.getElementById('bcs-label').textContent = data.label;
+  document.getElementById('bcs-label').style.color = data.color;
+  document.getElementById('bcs-desc').textContent = data.desc;
+  const size = val <= 3 ? '60px' : val >= 8 ? '110px' : `${60 + val * 5}px`;
+  document.getElementById('bcs-cat').style.fontSize = size;
+}
+
+// ==================== TABS ====================
+function showTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ==================== CONFETTI ====================
+function launchConfetti() {
+  const container = document.getElementById('confetti');
+  container.innerHTML = '';
+  const colors = ['#FF8C00','#FF6B6B','#00B894','#6C5CE7','#FDCB6E','#0984E3'];
+  for (let i = 0; i < 80; i++) {
+    const dot = document.createElement('div');
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.cssText = `position:fixed;width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;background:${color};border-radius:${Math.random()>0.5?'50%':'2px'};left:${Math.random()*100}%;top:-10px;opacity:1;transition:top ${1.5+Math.random()*2}s ease, opacity 0.5s;z-index:9999;`;
+    container.appendChild(dot);
+    setTimeout(() => { dot.style.top = '110vh'; dot.style.transform = `rotate(${Math.random()*720}deg)`; }, 50 + i * 20);
+    setTimeout(() => { dot.style.opacity = '0'; }, 2000 + i * 20);
+    setTimeout(() => { dot.remove(); }, 3500 + i * 20);
+  }
+}
+
+// ==================== SMOOTH SCROLL ====================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ==================== DAVI PROGRESS ANIMATION ====================
+setTimeout(() => {
+  document.getElementById('davi-progress').style.width = '40%';
+}, 800);
+
+// ==================== INIT ====================
+initQuiz();
+initSort();
+updateDaviDisplay();
+</script>
+</body>
+</html>
